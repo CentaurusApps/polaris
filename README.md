@@ -1,4 +1,4 @@
-# polaris
+# Polaris
 
 A new Flutter project.
 
