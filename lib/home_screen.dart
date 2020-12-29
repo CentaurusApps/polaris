@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,34 +9,31 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.add,
-          size: 30,
+      appBar: AppBar(
+        elevation: 3.0,
+        title: Text(
+          'My Habits',
+          style: TextStyle(color: Colors.grey[900]),
         ),
-        onPressed: () {},
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        child: Container(
-          height: 56.0,
-          child: Row(
-            children: [
-              IconButton(
-                padding: EdgeInsets.all(16.0),
-                icon: Icon(Icons.menu),
-                onPressed: () {},
-              ),
-              Spacer(),
-              IconButton(
-                padding: EdgeInsets.all(16.0),
-                icon: Icon(Icons.filter_list),
-                tooltip: 'Filter',
-                onPressed: () {},
-              ),
-            ],
+        actions: [
+          IconButton(
+            icon: Icon(Icons.filter_list),
+            tooltip: 'Filter',
+            onPressed: () {},
           ),
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            tooltip: 'More options',
+            onPressed: () {},
+          ),
+        ],
+      ),
+      floatingActionButton: Tooltip(
+        verticalOffset: 48.0,
+        message: 'Create a new habit',
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {},
         ),
       ),
     );
