@@ -1,3 +1,3 @@
 # Polaris
 
-A simple yet powerful habits app.
+A simple yet powerful habit app.
