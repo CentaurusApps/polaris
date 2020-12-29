@@ -1,3 +1,3 @@
 # Polaris
 
-A simple yet powerful habit app.
+A simple habit app based on the Material Design language.
