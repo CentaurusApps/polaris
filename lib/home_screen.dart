@@ -29,15 +29,34 @@ class _HomeScreenState extends State<HomeScreen> {
             itemBuilder: (BuildContext context) => <PopupMenuEntry<Filter>>[
               const PopupMenuItem<Filter>(
                 value: Filter.hideArchived,
-                child: Text('Hide archived'),
+                child: ListTile(
+                  title: Text('Hide archived'),
+                  trailing: Icon(
+                    Icons.check_box_outline_blank_rounded,
+                    color: Color(0xFFF40057),
+                  ),
+                ),
               ),
               const PopupMenuItem<Filter>(
                 value: Filter.hideCompleted,
-                child: Text('Hide completed'),
+                child: ListTile(
+                  title: Text('Hide completed'),
+                  trailing: Icon(
+                    Icons.check_box_outline_blank_rounded,
+                    color: Color(0xFFF40057),
+                  ),
+                ),
               ),
               const PopupMenuItem<Filter>(
                 value: Filter.sort,
-                child: Text('Sort'),
+                child: ListTile(
+                  subtitle: Text('by score'),
+                  title: Text('Sort'),
+                  trailing: Icon(
+                    Icons.arrow_right,
+                    color: Color(0xFFF40057),
+                  ),
+                ),
               ),
             ],
           ),
@@ -76,3 +95,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+// Sort:
+// *by name
+// *by score
+// *by due date
+// *by creation date
+// *manually
