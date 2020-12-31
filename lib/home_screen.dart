@@ -36,33 +36,41 @@ class _HomeScreenState extends State<HomeScreen> {
             itemBuilder: (BuildContext context) => <PopupMenuEntry<Menu>>[
               PopupMenuItem<Menu>(
                 value: Menu.hideCompleted,
-                child: CheckboxListTile(
-                  title: Text('Hide completed'),
-                  activeColor: Color(0xFFF40057),
-                  value: _isHideCompleted,
-                  selected: _isHideCompleted,
-                  onChanged: (bool value) {
-                    setState(() {
-                      _isHideCompleted = value;
-                    });
-                  },
-                  controlAffinity: ListTileControlAffinity.platform,
-                ),
+                child: StatefulBuilder(
+                    builder: (BuildContext context, StateSetter setState) {
+                  return CheckboxListTile(
+                    title: Text('Hide completed'),
+                    activeColor: Color(0xFFF40057),
+                    value: _isHideCompleted,
+                    selected: _isHideCompleted,
+                    onChanged: (bool value) {
+                      setState(() {
+                        _isHideCompleted = value;
+                        Navigator.pop(context);
+                      });
+                    },
+                    controlAffinity: ListTileControlAffinity.platform,
+                  );
+                }),
               ),
               PopupMenuItem<Menu>(
                 value: Menu.showArchived,
-                child: CheckboxListTile(
-                  title: Text('Show archived'),
-                  selected: _isShowArchived,
-                  activeColor: Color(0xFFF40057),
-                  value: _isShowArchived,
-                  onChanged: (bool value) {
-                    setState(() {
-                      _isShowArchived = value;
-                    });
-                  },
-                  controlAffinity: ListTileControlAffinity.platform,
-                ),
+                child: StatefulBuilder(
+                    builder: (BuildContext context, StateSetter setState) {
+                  return CheckboxListTile(
+                    title: Text('Show archived'),
+                    selected: _isShowArchived,
+                    activeColor: Color(0xFFF40057),
+                    value: _isShowArchived,
+                    onChanged: (bool value) {
+                      setState(() {
+                        _isShowArchived = value;
+                        Navigator.pop(context);
+                      });
+                    },
+                    controlAffinity: ListTileControlAffinity.platform,
+                  );
+                }),
               ),
               const PopupMenuItem<Menu>(
                 value: Menu.help,
