@@ -9,8 +9,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        systemNavigationBarColor: Color(0xFFFAFAFA),
-        systemNavigationBarIconBrightness: Brightness.dark,
+        // systemNavigationBarColor: Color(0xFFFAFAFA),
+        //systemNavigationBarIconBrightness: Brightness.dark,
         statusBarColor: Colors.white,
       ),
     );
@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Color(0xFFF40057),
         ),
         accentColor: Color(0xFFF40057),
+        scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
           color: Colors.white,
           actionsIconTheme: IconThemeData(color: Colors.grey[900]),

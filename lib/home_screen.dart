@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum Menu { settings, about, help }
-enum Filter { hideArchived, hideCompleted, sort }
+enum Menu { settings, help, showArchived, hideCompleted }
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,6 +8,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool _isShowArchived = false;
+  bool _isHideCompleted = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,46 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(color: Colors.grey[900]),
         ),
         actions: [
-          PopupMenuButton<Filter>(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
-            offset: Offset(8.0, 8.0),
-            tooltip: 'Filter',
-            icon: Icon(Icons.filter_list),
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<Filter>>[
-              const PopupMenuItem<Filter>(
-                value: Filter.hideArchived,
-                child: ListTile(
-                  title: Text('Hide archived'),
-                  trailing: Icon(
-                    Icons.check_box_outline_blank_rounded,
-                    color: Color(0xFFF40057),
-                  ),
-                ),
-              ),
-              const PopupMenuItem<Filter>(
-                value: Filter.hideCompleted,
-                child: ListTile(
-                  title: Text('Hide completed'),
-                  trailing: Icon(
-                    Icons.check_box_outline_blank_rounded,
-                    color: Color(0xFFF40057),
-                  ),
-                ),
-              ),
-              const PopupMenuItem<Filter>(
-                value: Filter.sort,
-                child: ListTile(
-                  subtitle: Text('by score'),
-                  title: Text('Sort'),
-                  trailing: Icon(
-                    Icons.arrow_right,
-                    color: Color(0xFFF40057),
-                  ),
-                ),
-              ),
-            ],
+          IconButton(
+            tooltip: 'Sort',
+            icon: Icon(Icons.sort),
+            onPressed: () {},
           ),
           PopupMenuButton<Menu>(
             shape: RoundedRectangleBorder(
@@ -68,29 +34,51 @@ class _HomeScreenState extends State<HomeScreen> {
             tooltip: 'More options',
             icon: Icon(Icons.more_vert),
             itemBuilder: (BuildContext context) => <PopupMenuEntry<Menu>>[
-              const PopupMenuItem<Menu>(
-                value: Menu.settings,
-                child: Text('Settings'),
+              PopupMenuItem<Menu>(
+                value: Menu.hideCompleted,
+                child: CheckboxListTile(
+                  title: Text('Hide completed'),
+                  activeColor: Color(0xFFF40057),
+                  value: _isHideCompleted,
+                  selected: _isHideCompleted,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _isHideCompleted = value;
+                    });
+                  },
+                  controlAffinity: ListTileControlAffinity.platform,
+                ),
+              ),
+              PopupMenuItem<Menu>(
+                value: Menu.showArchived,
+                child: CheckboxListTile(
+                  title: Text('Show archived'),
+                  selected: _isShowArchived,
+                  activeColor: Color(0xFFF40057),
+                  value: _isShowArchived,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _isShowArchived = value;
+                    });
+                  },
+                  controlAffinity: ListTileControlAffinity.platform,
+                ),
               ),
               const PopupMenuItem<Menu>(
                 value: Menu.help,
-                child: Text('Help and FAQ'),
+                child: ListTile(title: Text('Help & Feedback')),
               ),
               const PopupMenuItem<Menu>(
-                value: Menu.about,
-                child: Text('About'),
+                value: Menu.settings,
+                child: ListTile(title: Text('Settings')),
               ),
             ],
           ),
         ],
       ),
-      floatingActionButton: Tooltip(
-        verticalOffset: 48.0,
-        message: 'Create a new habit',
-        child: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {},
-        ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }
