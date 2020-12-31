@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 enum Menu { settings, help, showArchived, hideCompleted }
 
-class HomeScreen extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
   bool _isShowArchived = false;
   bool _isHideCompleted = false;
 
@@ -23,24 +23,24 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             tooltip: 'Sort',
-            icon: Icon(Icons.sort),
+            icon: const Icon(Icons.sort),
             onPressed: () {},
           ),
           PopupMenuButton<Menu>(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
-            offset: Offset(8.0, 8.0),
+            offset: const Offset(8.0, 8.0),
             tooltip: 'More options',
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             itemBuilder: (BuildContext context) => <PopupMenuEntry<Menu>>[
               PopupMenuItem<Menu>(
                 value: Menu.hideCompleted,
                 child: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
-                    title: Text('Hide completed'),
-                    activeColor: Color(0xFFF40057),
+                    title: const Text('Hide completed'),
+                    activeColor: const Color(0xFFF40057),
                     value: _isHideCompleted,
                     selected: _isHideCompleted,
                     onChanged: (bool value) {
@@ -49,7 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.pop(context);
                       });
                     },
-                    controlAffinity: ListTileControlAffinity.platform,
                   );
                 }),
               ),
@@ -58,9 +57,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
-                    title: Text('Show archived'),
+                    title: const Text('Show archived'),
                     selected: _isShowArchived,
-                    activeColor: Color(0xFFF40057),
+                    activeColor: const Color(0xFFF40057),
                     value: _isShowArchived,
                     onChanged: (bool value) {
                       setState(() {
@@ -68,7 +67,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.pop(context);
                       });
                     },
-                    controlAffinity: ListTileControlAffinity.platform,
                   );
                 }),
               ),
@@ -85,8 +83,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         onPressed: () {},
+        child: const Icon(Icons.add),
       ),
     );
   }
