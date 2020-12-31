@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'file:///C:/Users/PrestoSole/StudioProjects/polaris/lib/Pages/home_page.dart';
+import 'package:polaris/Pages/home_page.dart';
 
 void main() => runApp(MyApp());
 
