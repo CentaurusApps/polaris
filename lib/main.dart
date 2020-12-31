@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:polaris/home_screen.dart';
+import 'package:polaris/Pages/home_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,23 +9,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        systemNavigationBarColor: Color(0xFFFAFAFA),
         statusBarColor: Colors.white,
       ),
     );
     return MaterialApp(
       theme: ThemeData.light().copyWith(
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: Color(0xFFF40057),
         ),
-        accentColor: Color(0xFFF40057),
+        accentColor: const Color(0xFFF40057),
+        scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
           color: Colors.white,
           actionsIconTheme: IconThemeData(color: Colors.grey[900]),
           brightness: Brightness.light,
         ),
       ),
-      home: HomeScreen(),
+      home: HomePage(),
     );
   }
 }
