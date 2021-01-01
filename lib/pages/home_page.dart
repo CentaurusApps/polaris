@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:polaris/widgets/sort_dialog.dart';
 
 enum Menu { settings, help, showArchived, hideCompleted }
-enum Sort { name, score, dueDate, manually }
 
 class HomePage extends StatefulWidget {
   @override
@@ -89,55 +89,6 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
-    );
-  }
-}
-
-class SortDialog extends StatefulWidget {
-  @override
-  _SortDialogState createState() => _SortDialogState();
-}
-
-class _SortDialogState extends State<SortDialog> {
-  Sort _selectedRadio = Sort.score;
-
-  Map<String, Sort> dialogOptions = {
-    'My order': Sort.manually,
-    'Score': Sort.score,
-    'Date': Sort.dueDate,
-    'Name': Sort.name,
-  };
-
-  List<Widget> getRadios(Map<String, Sort> map) {
-    final List<RadioListTile> radioList = [];
-    map.forEach((key, value) {
-      final newRadio = RadioListTile<Sort>(
-        activeColor: const Color(0xFFF40057),
-        title: Text(key.toString()),
-        value: value,
-        groupValue: _selectedRadio,
-        onChanged: (Sort newValue) {
-          setState(() {
-            _selectedRadio = newValue;
-            Navigator.pop(context);
-          });
-        },
-      );
-      radioList.add(newRadio);
-    });
-    return radioList;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SimpleDialog(
-      title: const Text('Sort by'),
-      children: [
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: getRadios(dialogOptions),
-        ),
-      ],
     );
   }
 }
