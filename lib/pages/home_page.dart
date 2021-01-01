@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:polaris/widgets/sort_dialog.dart';
 
 enum Menu { settings, help, showArchived, hideCompleted }
 
@@ -24,7 +25,9 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             tooltip: 'Sort',
             icon: const Icon(Icons.sort),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(context: context, builder: (context) => SortDialog());
+            },
           ),
           PopupMenuButton<Menu>(
             shape: RoundedRectangleBorder(
@@ -89,10 +92,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-// Sort:
-// *by name
-// *by score
-// *by due date
-// *by creation date
-// *manually
