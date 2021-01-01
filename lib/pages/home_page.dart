@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 3.0,
         title: Text(
           'My Habits',
-          style: TextStyle(color: Colors.grey[900]),
+          style: TextStyle(color: Colors.grey.shade900),
         ),
         actions: [
           IconButton(
@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
                     title: const Text('Hide completed'),
-                    activeColor: const Color(0xFFF40057),
+                    activeColor: Theme.of(context).accentColor,
                     value: _isHideCompleted,
                     selected: _isHideCompleted,
                     onChanged: (bool value) {
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                   return CheckboxListTile(
                     title: const Text('Show archived'),
                     selected: _isShowArchived,
-                    activeColor: const Color(0xFFF40057),
+                    activeColor: Theme.of(context).accentColor,
                     value: _isShowArchived,
                     onChanged: (bool value) {
                       setState(() {

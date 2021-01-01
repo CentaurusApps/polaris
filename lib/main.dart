@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
         statusBarColor: Colors.white,
       ),
     );
+
     return MaterialApp(
       theme: ThemeData.light().copyWith(
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
           color: Colors.white,
-          actionsIconTheme: IconThemeData(color: Colors.grey[900]),
+          actionsIconTheme: IconThemeData(color: Colors.grey.shade900),
           brightness: Brightness.light,
         ),
       ),
