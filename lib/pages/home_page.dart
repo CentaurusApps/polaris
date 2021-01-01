@@ -119,6 +119,7 @@ class _SortDialogState extends State<SortDialog> {
         onChanged: (Sort newValue) {
           setState(() {
             _selectedRadio = newValue;
+            Navigator.pop(context);
           });
         },
       );
