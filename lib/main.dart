@@ -13,16 +13,17 @@ class MyApp extends StatelessWidget {
         statusBarColor: Colors.white,
       ),
     );
+
     return MaterialApp(
       theme: ThemeData.light().copyWith(
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Color(0xFFF40057),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Theme.of(context).accentColor,
         ),
         accentColor: const Color(0xFFF40057),
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
           color: Colors.white,
-          actionsIconTheme: IconThemeData(color: Colors.grey[900]),
+          actionsIconTheme: IconThemeData(color: Colors.grey.shade900),
           brightness: Brightness.light,
         ),
       ),
