@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       theme: ThemeData.light().copyWith(
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: Theme.of(context).accentColor,
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Color(0xFFF40057),
         ),
         accentColor: const Color(0xFFF40057),
         scaffoldBackgroundColor: Colors.white,
