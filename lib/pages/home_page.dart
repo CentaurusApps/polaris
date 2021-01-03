@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:polaris/themes.dart';
 import 'package:polaris/widgets/sort_dialog.dart';
 
 enum Menu { settings, help, showArchived, hideCompleted }
@@ -42,6 +44,7 @@ class _HomePageState extends State<HomePage> {
                 child: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
+                    checkColor: AppThemeState.checkColor,
                     title: const Text('Hide completed'),
                     value: _isHideCompleted,
                     onChanged: (bool value) {
@@ -58,6 +61,7 @@ class _HomePageState extends State<HomePage> {
                 child: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
+                    checkColor: AppThemeState.checkColor,
                     title: const Text('Show archived'),
                     value: _isShowArchived,
                     onChanged: (bool value) {
@@ -85,6 +89,12 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
+
+      /// To test Dark mode:
+      // body: Container(
+      //   alignment: AlignmentDirectional.center,
+      //   child: DarkModeSwitch(),
+      // ),
     );
   }
 }
