@@ -17,7 +17,7 @@ class SortDialog extends ConsumerWidget {
     final radios = [
       for (final entry in _dialogOptions.entries)
         RadioListTile<SortType>(
-          activeColor: Theme.of(context).accentColor,
+          //activeColor: Theme.of(context).accentColor,
           title: Text(entry.key.toString()),
           value: entry.value,
           groupValue: sortType.state,
