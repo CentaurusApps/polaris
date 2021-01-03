@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polaris/themes.dart';
+import 'package:polaris/themes/light_theme.dart';
+import 'package:polaris/themes/theme_switcher.dart';
 import 'package:polaris/widgets/sort_dialog.dart';
 
 enum Menu { settings, help, showArchived, hideCompleted }
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    getLightBarsData();
     return Scaffold(
       appBar: AppBar(
         elevation: 3.0,
@@ -89,7 +91,6 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
-      
     );
   }
 }
