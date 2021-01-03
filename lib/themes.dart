@@ -6,29 +6,19 @@ import 'main.dart';
 
 class AppThemeState extends ChangeNotifier {
   bool isDarkModeEnabled = false;
+  var barTheme = AppTheme.lightBarTheme;
   static Color checkColor = Colors.white;
 
   void setLightTheme() {
     checkColor = Colors.white;
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        systemNavigationBarColor: Color(0xFFF2F2F2),
-        statusBarColor: Colors.white,
-      ),
-    );
-
+    barTheme = AppTheme.lightBarTheme;
     isDarkModeEnabled = false;
     notifyListeners();
   }
 
   void setDarkTheme() {
     checkColor = Colors.grey.shade900;
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.black,
-        statusBarColor: Colors.black,
-      ),
-    );
+    barTheme = AppTheme.darkBarTheme;
     isDarkModeEnabled = true;
     notifyListeners();
   }
@@ -59,6 +49,20 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       textTheme: TextTheme(subtitle1: TextStyle(color: Colors.white)),
       color: Colors.black,
+    ),
+  );
+
+  static final lightBarTheme = SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: Color(0xFFF2F2F2),
+      statusBarColor: Colors.white,
+    ),
+  );
+
+  static final darkBarTheme = SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.black,
+      statusBarColor: Colors.black,
     ),
   );
 }

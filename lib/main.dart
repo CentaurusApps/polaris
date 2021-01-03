@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:polaris/pages//home_page.dart';
 import 'package:polaris/themes.dart';
@@ -13,13 +12,8 @@ void main() => runApp(
 class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        systemNavigationBarColor: Color(0xFFF2F2F2),
-        statusBarColor: Colors.white,
-      ),
-    );
     final appThemeState = watch(appThemeStateNotifier);
+    AppTheme.lightBarTheme;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

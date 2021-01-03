@@ -89,12 +89,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
-
-      /// To test Dark mode:
-      // body: Container(
-      //   alignment: AlignmentDirectional.center,
-      //   child: DarkModeSwitch(),
-      // ),
+      
     );
   }
 }
