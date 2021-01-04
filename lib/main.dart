@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:polaris/pages//home_page.dart';
-import 'package:polaris/themes/black_theme.dart';
-import 'package:polaris/themes/light_theme.dart';
 import 'package:polaris/themes/theme_switcher.dart';
 
-final appThemeStateNotifier = ChangeNotifierProvider((ref) => AppThemeState());
+final themeStateNotifier = ChangeNotifierProvider((ref) => ThemeModel());
 
 void main() {
   runApp(
     ProviderScope(child: MyApp()),
   );
-  AppThemeState().barColor();
+  ThemeModel().barsColor();
 }
 
 class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final _appThemeState = watch(appThemeStateNotifier);
+    final _themeState = watch(themeStateNotifier);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      darkTheme: blackTheme,
-      themeMode: AppThemeState().selectTheme(_appThemeState),
+      theme: _themeState.currentTheme,
       home: HomePage(),
     );
   }

@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final _appThemeState = context.read(appThemeStateNotifier);
+    final _themeState = context.read(themeStateNotifier);
 
     return Scaffold(
       appBar: AppBar(
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 child: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
-                    checkColor: AppThemeState().checkColor(_appThemeState),
+                    checkColor: ThemeModel().checkMarkColor(_themeState),
                     title: const Text('Hide completed'),
                     value: _isHideCompleted,
                     onChanged: (bool value) {
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                 child: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
-                    checkColor: AppThemeState().checkColor(_appThemeState),
+                    checkColor: ThemeModel().checkMarkColor(_themeState),
                     title: const Text('Show archived'),
                     value: _isShowArchived,
                     onChanged: (bool value) {

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/all.dart';
+import 'package:polaris/themes/black_theme.dart';
+import 'package:polaris/themes/light_theme.dart';
 
 import '../main.dart';
 
-enum ThemeState { light, dark, black }
-
-class AppThemeState extends ChangeNotifier {
+class ThemeModel extends ChangeNotifier {
   bool isDarkModeEnabled = false;
-  ThemeState _theme = ThemeState.light;
+  ThemeData currentTheme = lightTheme;
 
   void setLightTheme() {
     SystemChrome.setSystemUIOverlayStyle(
@@ -17,8 +17,8 @@ class AppThemeState extends ChangeNotifier {
         statusBarColor: Colors.white,
       ),
     );
-    _theme = ThemeState.light;
     isDarkModeEnabled = false;
+    currentTheme = lightTheme;
 
     notifyListeners();
   }
@@ -30,16 +30,18 @@ class AppThemeState extends ChangeNotifier {
         statusBarColor: Colors.black,
       ),
     );
-    _theme = ThemeState.black;
     isDarkModeEnabled = true;
+    currentTheme = blackTheme;
 
     notifyListeners();
   }
 
-  Color checkColor(AppThemeState appThemeState) {
-    if (appThemeState._theme == ThemeState.black) {
+  void setDarkTheme() {}
+
+  Color checkMarkColor(ThemeModel appThemeState) {
+    if (appThemeState.currentTheme == blackTheme) {
       return Colors.grey.shade900;
-    } else if (appThemeState._theme == ThemeState.light) {
+    } else if (appThemeState.currentTheme == lightTheme) {
       return Colors.white;
     } else {
       // Return color for dark theme
@@ -47,26 +49,15 @@ class AppThemeState extends ChangeNotifier {
     }
   }
 
-  ThemeMode selectTheme(AppThemeState appThemeState) {
-    if (appThemeState._theme == ThemeState.black) {
-      return ThemeMode.dark;
-    } else if (appThemeState._theme == ThemeState.light) {
-      return ThemeMode.light;
-    } else {
-      // Return dark theme
-      return ThemeMode.light;
-    }
-  }
-
-  void barColor() {
-    if (AppThemeState()._theme == ThemeState.black) {
+  void barsColor() {
+    if (ThemeModel().currentTheme == blackTheme) {
       SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(
           systemNavigationBarColor: Colors.black,
           statusBarColor: Colors.black,
         ),
       );
-    } else if (AppThemeState()._theme == ThemeState.light) {
+    } else if (ThemeModel().currentTheme == lightTheme) {
       SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(
           systemNavigationBarColor: Color(0xFFF2F2F2),
@@ -80,7 +71,7 @@ class AppThemeState extends ChangeNotifier {
 class DarkModeSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appThemeState = context.read(appThemeStateNotifier);
+    final appThemeState = context.read(themeStateNotifier);
     return Switch(
       value: appThemeState.isDarkModeEnabled,
       onChanged: (enabled) {
