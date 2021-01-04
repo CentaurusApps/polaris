@@ -1,32 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:polaris/pages//home_page.dart';
+import 'package:polaris/themes/theme_switcher.dart';
 
-void main() => runApp(ProviderScope(child: MyApp()));
+final themeStateNotifier = ChangeNotifierProvider((ref) => ThemeModel());
 
-class MyApp extends StatelessWidget {
+void main() {
+  runApp(
+    ProviderScope(child: MyApp()),
+  );
+  ThemeModel().barsColor();
+}
+
+class MyApp extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-      ),
-    );
+  Widget build(BuildContext context, ScopedReader watch) {
+    final _themeState = watch(themeStateNotifier);
 
     return MaterialApp(
-      theme: ThemeData.light().copyWith(
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Color(0xFFF40057),
-        ),
-        accentColor: const Color(0xFFF40057),
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
-          color: Colors.white,
-          actionsIconTheme: IconThemeData(color: Colors.grey.shade900),
-          brightness: Brightness.light,
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      theme: _themeState.currentTheme,
       home: HomePage(),
     );
   }

@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:polaris/main.dart';
+import 'package:polaris/themes/theme_switcher.dart';
 import 'package:polaris/widgets/sort_dialog.dart';
 
 enum Menu { settings, help, showArchived, hideCompleted }
@@ -14,12 +18,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _themeState = context.read(themeStateNotifier);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 3.0,
         title: Text(
           'My Habits',
-          style: TextStyle(color: Colors.grey.shade900),
+          style: Theme.of(context).appBarTheme.textTheme.subtitle1,
         ),
         actions: [
           IconButton(
@@ -42,6 +48,7 @@ class _HomePageState extends State<HomePage> {
                 child: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
+                    checkColor: ThemeModel().checkMarkColor(_themeState),
                     title: const Text('Hide completed'),
                     value: _isHideCompleted,
                     onChanged: (bool value) {
@@ -58,6 +65,7 @@ class _HomePageState extends State<HomePage> {
                 child: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
+                    checkColor: ThemeModel().checkMarkColor(_themeState),
                     title: const Text('Show archived'),
                     value: _isShowArchived,
                     onChanged: (bool value) {
@@ -84,6 +92,10 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add),
+      ),
+      body: Container(
+        alignment: AlignmentDirectional.center,
+        child: DarkModeSwitch(),
       ),
     );
   }
