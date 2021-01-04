@@ -60,7 +60,6 @@ class _HomePageState extends State<HomePage> {
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
                     title: const Text('Show archived'),
-                    activeColor: Theme.of(context).accentColor,
                     value: _isShowArchived,
                     onChanged: (bool value) {
                       setState(() {
