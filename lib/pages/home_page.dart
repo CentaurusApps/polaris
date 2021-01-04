@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polaris/themes/light_theme.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:polaris/main.dart';
 import 'package:polaris/themes/theme_switcher.dart';
 import 'package:polaris/widgets/sort_dialog.dart';
 
@@ -17,7 +18,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    getLightBarsData();
+    final _appThemeState = context.read(appThemeStateNotifier);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 3.0,
@@ -46,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 child: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
-                    checkColor: AppThemeState.checkColor,
+                    checkColor: AppThemeState().checkColor(_appThemeState),
                     title: const Text('Hide completed'),
                     value: _isHideCompleted,
                     onChanged: (bool value) {
@@ -63,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                 child: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
                   return CheckboxListTile(
-                    checkColor: AppThemeState.checkColor,
+                    checkColor: AppThemeState().checkColor(_appThemeState),
                     title: const Text('Show archived'),
                     value: _isShowArchived,
                     onChanged: (bool value) {
@@ -91,6 +93,10 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
+      // body: Container(
+      //   alignment: AlignmentDirectional.center,
+      //   child: DarkModeSwitch(),
+      // ),
     );
   }
 }

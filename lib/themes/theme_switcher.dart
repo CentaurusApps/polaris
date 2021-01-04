@@ -1,28 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/all.dart';
 
 import '../main.dart';
-import 'dark_theme.dart';
-import 'light_theme.dart';
 
 class AppThemeState extends ChangeNotifier {
   bool isDarkModeEnabled = false;
-  static Color checkColor = Colors.white;
 
-  ThemeData setLightTheme() {
-    getLightBarsData();
-    checkColor = Colors.white;
+  void setLightTheme() {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Color(0xFFF2F2F2),
+        statusBarColor: Colors.white,
+      ),
+    );
     isDarkModeEnabled = false;
+
     notifyListeners();
-    return getLightThemeData();
   }
 
-  ThemeData setDarkTheme() {
-    getDarkBarsData();
-    checkColor = Colors.grey.shade900;
+  void setDarkTheme() {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.black,
+        statusBarColor: Colors.black,
+      ),
+    );
     isDarkModeEnabled = true;
+
     notifyListeners();
-    return getDarkThemeData();
+  }
+
+  Color checkColor(AppThemeState appThemeState) {
+    if (appThemeState.isDarkModeEnabled) {
+      return Colors.grey.shade900;
+    } else {
+      return Colors.white;
+    }
+  }
+
+  ThemeMode selectTheme(AppThemeState appThemeState) {
+    if (appThemeState.isDarkModeEnabled) {
+      return ThemeMode.dark;
+    } else {
+      return ThemeMode.light;
+    }
   }
 }
 
