@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:polaris/pages//home_page.dart';
-import 'package:polaris/themes/dark_theme.dart';
+import 'package:polaris/themes/black_theme.dart';
 import 'package:polaris/themes/light_theme.dart';
 import 'package:polaris/themes/theme_switcher.dart';
 
@@ -12,16 +11,7 @@ void main() {
   runApp(
     ProviderScope(child: MyApp()),
   );
-
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      systemNavigationBarColor: AppThemeState().isDarkModeEnabled
-          ? Colors.black
-          : const Color(0xFFF2F2F2),
-      statusBarColor:
-          AppThemeState().isDarkModeEnabled ? Colors.black : Colors.white,
-    ),
-  );
+  AppThemeState().barColor();
 }
 
 class MyApp extends ConsumerWidget {
@@ -32,7 +22,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
-      darkTheme: darkTheme,
+      darkTheme: blackTheme,
       themeMode: AppThemeState().selectTheme(_appThemeState),
       home: HomePage(),
     );

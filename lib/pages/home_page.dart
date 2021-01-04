@@ -93,10 +93,10 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
-      // body: Container(
-      //   alignment: AlignmentDirectional.center,
-      //   child: DarkModeSwitch(),
-      // ),
+      body: Container(
+        alignment: AlignmentDirectional.center,
+        child: DarkModeSwitch(),
+      ),
     );
   }
 }
