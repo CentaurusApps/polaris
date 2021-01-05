@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 
 ThemeData lightTheme = ThemeData.light().copyWith(
   toggleableActiveColor: ThemeData.light().accentColor,
-  scaffoldBackgroundColor: Colors.white,
+  scaffoldBackgroundColor: const Color(0xFFF2F2F2),
   appBarTheme: AppBarTheme(
     textTheme: TextTheme(subtitle1: TextStyle(color: Colors.grey.shade900)),
-    color: Colors.white,
+    color: const Color(0xFFF2F2F2),
     actionsIconTheme: IconThemeData(color: Colors.grey.shade900),
     brightness: Brightness.light,
   ),
