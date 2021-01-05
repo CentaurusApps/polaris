@@ -14,7 +14,7 @@ class ThemeModel extends ChangeNotifier {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         systemNavigationBarColor: Color(0xFFF2F2F2),
-        statusBarColor: Colors.white,
+        statusBarColor: Color(0xFFF2F2F2),
       ),
     );
     isDarkModeEnabled = false;
@@ -36,12 +36,13 @@ class ThemeModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///TODO:
   void setDarkTheme() {}
 
-  Color checkMarkColor(ThemeModel appThemeState) {
-    if (appThemeState.currentTheme == blackTheme) {
+  Color checkMarkColor() {
+    if (currentTheme == blackTheme) {
       return Colors.grey.shade900;
-    } else if (appThemeState.currentTheme == lightTheme) {
+    } else if (currentTheme == lightTheme) {
       return Colors.white;
     } else {
       // Return color for dark theme
@@ -50,20 +51,16 @@ class ThemeModel extends ChangeNotifier {
   }
 
   void barsColor() {
-    if (ThemeModel().currentTheme == blackTheme) {
-      SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(
-          systemNavigationBarColor: Colors.black,
-          statusBarColor: Colors.black,
-        ),
-      );
-    } else if (ThemeModel().currentTheme == lightTheme) {
-      SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(
-          systemNavigationBarColor: Color(0xFFF2F2F2),
-          statusBarColor: Colors.white,
-        ),
-      );
+    if (currentTheme == blackTheme) {
+      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.black,
+        statusBarColor: Colors.black,
+      ));
+    } else if (currentTheme == lightTheme) {
+      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        systemNavigationBarColor: Color(0xFFF2F2F2),
+        statusBarColor: Colors.white,
+      ));
     }
   }
 }

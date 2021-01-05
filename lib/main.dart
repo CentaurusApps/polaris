@@ -6,10 +6,12 @@ import 'package:polaris/themes/theme_switcher.dart';
 final themeStateNotifier = ChangeNotifierProvider((ref) => ThemeModel());
 
 void main() {
+  final container = ProviderContainer();
+  final _themeState = container.read(themeStateNotifier);
   runApp(
     ProviderScope(child: MyApp()),
   );
-  ThemeModel().barsColor();
+  _themeState.barsColor();
 }
 
 class MyApp extends ConsumerWidget {
