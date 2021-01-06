@@ -1,4 +1,4 @@
-import 'package:polaris_utils/polaris_utils.dart';
+import 'package:polaris_core/polaris_core.dart';
 import 'package:test/test.dart';
 
 void main() {
