@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 ThemeData lightTheme = ThemeData.light().copyWith(
+  snackBarTheme: const SnackBarThemeData(backgroundColor: Color(0xFF6F6F6F)),
   toggleableActiveColor: ThemeData.light().accentColor,
   scaffoldBackgroundColor: const Color(0xFFF2F2F2),
   appBarTheme: AppBarTheme(
     textTheme: TextTheme(subtitle1: TextStyle(color: Colors.grey.shade900)),
     color: const Color(0xFFF2F2F2),
     actionsIconTheme: IconThemeData(color: Colors.grey.shade900),
+    iconTheme: IconThemeData(color: Colors.grey.shade900),
     brightness: Brightness.light,
   ),
 );
