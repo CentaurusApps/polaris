@@ -8,10 +8,11 @@ jobs:
 
     strategy:
       matrix:
-        - packages/polaris_core
-        - packages/polaris_domain
-        - packages/polaris_data
-        - packages/polaris_ui
+        package:
+          - packages/polaris_core
+          - packages/polaris_domain
+          - packages/polaris_data
+          - packages/polaris_ui
 
     steps:
       - uses: actions/checkout@v2
