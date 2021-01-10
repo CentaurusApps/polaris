@@ -17,6 +17,7 @@ class ThemeModel extends ChangeNotifier {
         statusBarColor: Color(0xFFF2F2F2),
       ),
     );
+
     isDarkModeEnabled = false;
     currentTheme = lightTheme;
 
@@ -30,6 +31,7 @@ class ThemeModel extends ChangeNotifier {
         statusBarColor: Colors.black,
       ),
     );
+
     isDarkModeEnabled = true;
     currentTheme = blackTheme;
 
@@ -59,7 +61,7 @@ class ThemeModel extends ChangeNotifier {
     } else if (currentTheme == lightTheme) {
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         systemNavigationBarColor: Color(0xFFF2F2F2),
-        statusBarColor: Colors.white,
+        statusBarColor: Color(0xFFF2F2F2),
       ));
     }
   }
