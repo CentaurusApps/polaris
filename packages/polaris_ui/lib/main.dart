@@ -11,7 +11,7 @@ void main() {
   runApp(
     ProviderScope(child: MyApp()),
   );
-  _themeState.barsColor();
+  _themeState.setBarsColor();
 }
 
 class MyApp extends ConsumerWidget {

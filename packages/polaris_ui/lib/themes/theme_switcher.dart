@@ -11,27 +11,17 @@ class ThemeModel extends ChangeNotifier {
   ThemeData currentTheme = lightTheme;
 
   void setLightTheme() {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        systemNavigationBarColor: Color(0xFFF2F2F2),
-        statusBarColor: Color(0xFFF2F2F2),
-      ),
-    );
     isDarkModeEnabled = false;
     currentTheme = lightTheme;
+    setBarsColor();
 
     notifyListeners();
   }
 
   void setBlackTheme() {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.black,
-        statusBarColor: Colors.black,
-      ),
-    );
     isDarkModeEnabled = true;
     currentTheme = blackTheme;
+    setBarsColor();
 
     notifyListeners();
   }
@@ -50,7 +40,7 @@ class ThemeModel extends ChangeNotifier {
     }
   }
 
-  void barsColor() {
+  void setBarsColor() {
     if (currentTheme == blackTheme) {
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         systemNavigationBarColor: Colors.black,
@@ -59,7 +49,7 @@ class ThemeModel extends ChangeNotifier {
     } else if (currentTheme == lightTheme) {
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         systemNavigationBarColor: Color(0xFFF2F2F2),
-        statusBarColor: Colors.white,
+        statusBarColor: Color(0xFFF2F2F2),
       ));
     }
   }
