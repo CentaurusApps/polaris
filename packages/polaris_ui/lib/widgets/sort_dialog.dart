@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:polaris/sort_type.dart';
+import 'package:polaris_domain/entities/sort_order.dart';
 
 class SortDialog extends ConsumerWidget {
   static const _dialogOptions = {
@@ -10,9 +10,10 @@ class SortDialog extends ConsumerWidget {
     'Name': SortType.name,
   };
 
+  // TODO: add a reverse button or checkbox or whatever.
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final sortType = watch(sortTypeProvider);
+    final sortOrder = watch(sortOrderProvider);
 
     final radios = [
       for (final entry in _dialogOptions.entries)
@@ -20,9 +21,10 @@ class SortDialog extends ConsumerWidget {
           //activeColor: Theme.of(context).accentColor,
           title: Text(entry.key.toString()),
           value: entry.value,
-          groupValue: sortType.state,
+          groupValue: sortOrder.state.sortType,
           onChanged: (newValue) {
-            sortType.state = newValue;
+            sortOrder.state = SortOrder(
+                sortType: newValue, reversed: sortOrder.state.reversed);
             Navigator.pop(context);
           },
         )
