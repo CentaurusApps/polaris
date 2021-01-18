@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:polaris/pages//home_page.dart';
-import 'package:polaris/themes/theme_model.dart';
+
+import 'themes/theme_model.dart';
 
 final themeStateNotifier = ChangeNotifierProvider((ref) => ThemeModel());
 
@@ -11,7 +12,7 @@ void main() {
   runApp(
     ProviderScope(child: MyApp()),
   );
-  _themeState.setBarsColor();
+  AppTheme.lightBarsColor();
 }
 
 class MyApp extends ConsumerWidget {
