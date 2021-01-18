@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 3.0,
         title: Text(
           'My Habits',
-          style: Theme.of(context).textTheme.subtitle1,
+          style: Theme.of(context).appBarTheme.textTheme.subtitle1,
         ),
         actions: [
           IconButton(
