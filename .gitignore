@@ -31,6 +31,7 @@
 .pub/
 /build/
 /packages/polaris_ui/build/
+/packages/polaris_ui/.dart_tool/
 
 # Web related
 lib/generated_plugin_registrant.dart
