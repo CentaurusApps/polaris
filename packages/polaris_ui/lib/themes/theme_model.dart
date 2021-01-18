@@ -6,12 +6,10 @@ import 'package:polaris/main.dart';
 class ThemeModel extends ChangeNotifier {
   bool isDarkModeEnabled = false;
   ThemeData currentTheme = AppTheme.light;
-  Color toggleableActiveColor = Colors.white;
 
   void setLightTheme() {
     isDarkModeEnabled = false;
     currentTheme = AppTheme.light;
-    toggleableActiveColor = Colors.white;
     AppTheme.lightBarsColor();
 
     notifyListeners();
@@ -20,7 +18,6 @@ class ThemeModel extends ChangeNotifier {
   void setBlackTheme() {
     isDarkModeEnabled = true;
     currentTheme = AppTheme.black;
-    toggleableActiveColor = Colors.grey.shade900;
 
     AppTheme.blackBarsColor();
 
@@ -29,6 +26,15 @@ class ThemeModel extends ChangeNotifier {
 
   ///TODO:
   void setDarkTheme() {}
+
+  Color checkColor() {
+    if (currentTheme == AppTheme.black) {
+      return Colors.grey.shade900;
+    } else if (currentTheme == AppTheme.light) {
+      return Colors.white;
+    }
+    return Colors.grey.shade900;
+  }
 }
 
 class AppTheme {
